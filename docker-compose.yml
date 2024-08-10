@@ -1,0 +1,19 @@
+version: '3.2'
+
+services:
+  go-api-postgres:
+          build: docker/postgres
+          ports:
+              - "5432:5432"
+          networks:
+              - backend
+          volumes:
+              - /data/postgres
+          environment:
+              - TZ=Europe/Kiev
+              - PGTZ=Europe/Kiev
+              - POSTGRES_USER=admin
+              - POSTGRES_PASSWORD=admin
+              - POSTGRES_DB=go-api
+networks:
+    backend:
